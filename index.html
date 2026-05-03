@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELEVATE | Luxury Fitness & Wellness Elite</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --primary-gold-dark: #B8942F;
+            --primary-dark: #0F0F0F;
+            --secondary-dark: #1A1A1A;
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --text-light: #FFFFFF;
+            --text-muted: #B8BCC8;
+            --accent-neon: #00F5FF;
+            --accent-purple: #8B5CF6;
+            --gradient-hero: linear-gradient(135deg, #0F0F0F 0%, #1A1A1A 50%, #2D2D2D 100%);
+            --gradient-gold: linear-gradient(135deg, var(--primary-gold) 0%, #F4D03F 50%, var(--primary-gold-dark) 100%);
+            --gradient-glass: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--text-light);
+            overflow-x: hidden;
+            background: var(--primary-dark);
+        }
+
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: var(--gradient-gold);
+            z-index: 9999;
+            box-shadow: 0 0 20px var(--primary-gold);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(30px);
+            border-bottom: 1px solid var(--glass-border);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        nav {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.2rem;
+            font-weight: 900;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -2px;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-gold);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::before {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn-header {
+            padding: 0.8rem 2rem;
+            background: var(--gradient-glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            color: var(--text-light);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-header:hover {
+            background: var(--gradient-gold);
+            color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: var(--gradient-gold);
+            background: var(--text-light);
+            border-radius: 3px;
+            transition: 0.3s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120,119,198,0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,119,198,0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120,219,255,0.3) 0%, transparent 50%),
+                var(--gradient-hero);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1.5" fill="white" opacity="0.08"/><circle cx="50" cy="10" r="0.8" fill="%23D4AF37" opacity="0.15"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            animation: grain 20s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes grain {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-5%, 5%); }
+            20% { transform: translate(-10%, 15%); }
+            30% { transform: translate(5%, -5%); }
+            40% { transform: translate(-5%, 15%); }
+            50% { transform: translate(-10%, 5%); }
+            60% { transform: translate(15%, 0%); }
+            70% { transform: translate(0%, 10%); }
+            80% { transform: translate(-15%, 0%); }
+            90% { transform: translate(10%, 5%); }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 0 2rem;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--accent-neon);
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            animation: neonGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes neonGlow {
+            from { text-shadow: 0 0 10px var(--accent-neon); }
+            to { text-shadow: 0 0 20px var(--accent-neon), 0 0 30px var(--accent-neon); }
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(4rem, 10vw, 8rem);
+            font-weight: 900;
+            line-height: 0.9;
+            margin-bottom: 2rem;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -3px;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 3.5rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            position: relative;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            backdrop-filter: blur(20px);
+        }
+
+        .btn-primary {
+            background: var(--gradient-gold);
+            color: var(--primary-dark);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--glass-bg);
+            color: var(--text-light);
+            border: 2px solid var(--glass-border);
+        }
+
+        .btn:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .float-item {
+            position: absolute;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 50%;
+            border: 1px solid var(--glass-border);
+            animation: float 20s infinite linear;
+        }
+
+        .float-item:nth-child(1) { width: 80px; height: 80px; top: 20%; left: 10%; animation-delay: 0s; }
+        .float-item:nth-child(2) { width: 120px; height: 120px; top: 60%; right: 15%; animation-delay: -5s; }
+        .float-item:nth-child(3) { width: 60px; height: 60px; bottom: 20%; left: 20%; animation-delay: -10s; }
+        .float-item:nth-child(4) { width: 100px; height: 100px; top: 40%; right: 25%; animation-delay: -15s; }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+            100% { transform: translateY(0px) rotate(360deg); }
+        }
+
+        /* Sections */
+        section {
+            padding: 120px 5%;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 5rem;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-gold);
+            border-radius: 2px;
+            box-shadow: 0 0 20px var(--primary-gold);
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 3rem;
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--gradient-gold);
+            transform: scaleX(0);
+            transition: transform 0.6s ease;
+        }
+
+        .glass-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-20px) scale(1.02);
+            background: rgba(255,255,255,0.12);
+            box-shadow: 
+                0 35px 70px rgba(0,0,0,0.5),
+                0 0 40px rgba(212, 175, 55, 0.3);
+            border-color: rgba(212, 175, 55, 0.5);
+        }
+
+        /* Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .feature-icon {
+            font-size: 4.5rem;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+            display: block;
+            filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.5));
+        }
+
+        .feature-card h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Advanced Stats */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 6rem;
+            perspective: 1000px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .stat-number {
+            font-family: 'Orbitron', monospace;
+            font-size: 4.5rem;
+            font-weight: 900;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 1rem;
+            transform: translateZ(20px);
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        /* Pricing */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 5rem;
+        }
+
+        .pricing-card.featured {
+            background: linear-gradient(145deg, rgba(212,175,55,0.15), rgba(255,255,255,0.08));
+            border: 2px solid rgba(212, 175, 55, 0.4);
+            transform: scale(1.05);
+            box-shadow: 0 40px 80px rgba(212, 175, 55, 0.2);
+        }
+
+        .pricing-card.featured .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient-gold);
+            color: var(--primary-dark);
+            padding: 0.8rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+            letter-spacing: 1px;
+        }
+
+        .price {
+            font-family: 'Orbitron', monospace;
+            font-size: 5rem;
+            font-weight: 900;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 1.5rem 0;
+        }
+
+        .price span {
+            font-size: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 2.5rem 0;
+        }
+
+        .pricing-features li {
+            padding: 1rem 0;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .pricing-features li i {
+            color: var(--primary-gold);
+            width: 20px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: radial-gradient(ellipse at center, rgba(139,92,246,0.1) 0%, transparent 70%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 5rem;
+        }
+
+        .stars {
+            color: var(--primary-gold);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        /* Classes Schedule */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .class-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .class-time {
+            background: var(--accent-neon);
+            color: var(--primary-dark);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0, 245, 255, 0.4);
+        }
+
+        /* Trainers */
+        .trainers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .trainer-card {
+            text-align: center;
+            position: relative;
+        }
+
+        .trainer-photo {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(45deg, var(--accent-purple), var(--accent-neon));
+            border-radius: 25px;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(212,175,55,0.2) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(0,245,255,0.15) 0%, transparent 50%),
+                var(--gradient-hero);
+            text-align: center;
+        }
+
+        /* WhatsApp Ultra Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 70px;
+            height: 70px;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(145deg, #25D366, #128C7E);
+            color: #FFF;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 
+                0 20px 40px rgba(37, 211, 102, 0.4),
+                0 0 0 0 rgba(37, 211, 102, 0.7);
+            z-index: 10000;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            animation: whatsappPulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: translateY(-10px) scale(1.15);
+            box-shadow: 
+                0 30px 60px rgba(37, 211, 102, 0.6),
+                0 0 0 20px rgba(37, 211, 102, 0);
+            background: linear-gradient(145deg, #128C7E, #25D366);
+        }
+
+        @keyframes whatsappPulse {
+            0% { 
+                box-shadow: 
+                    0 20px 40px rgba(37, 211, 102, 0.4),
+                    0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% { 
+                box-shadow: 
+                    0 20px 40px rgba(37, 211, 102, 0.4),
+                    0 0 0 25px rgba(37, 211, 102, 0);
+            }
+            100% { 
+                box-shadow: 
+                    0 20px 40px rgba(37, 211, 102, 0.4),
+                    0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            border-top: 1px solid var(--glass-border);
+            padding: 5rem 5% 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Orbitron', monospace;
+            margin-bottom: 1.5rem;
+            color: var(--primary-gold);
+        }
+
+        .footer-section a {
+            color: var(--text-muted);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .nav-links { 
+                position: fixed;
+                left: -100%;
+                top: 100%;
+                flex-direction: column;
+                width: 100%;
+                background: rgba(15,15,15,0.98);
+                backdrop-filter: blur(30px);
+                padding: 3rem;
+                gap: 2rem;
+            }
+            .nav-links.active { left: 0; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+            .features-grid, .pricing-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--secondary-dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-gold);
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-gold-dark);
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress -->
+    <div class="scroll-progress"></div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">ELEVATE</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#classes">Classes</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#trainers">Trainers</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+            </ul>
+            <div class="header-actions">
+                <a href="#" class="btn-header">Login</a>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="floating-elements">
+            <div class="float-item"><i class="fas fa-dumbbell"></i></div>
+            <div class="float-item"><i class="fas fa-heartbeat"></i></div>
+            <div class="float-item"><i class="fas fa-fire"></i></div>
+            <div class="float-item"><i class="fas fa-star"></i></div>
+        </div>
+        <div class="hero-content" data-aos="fade-up">
+            <div class="hero-subtitle">PREMIER LUXURY FITNESS</div>
+            <h1>ELITE TRANSFORMATION</h1>
+            <p>Experience world-class facilities, certified master trainers, and personalized programs that deliver unmatched results. Join 5,000+ elite members.</p>
+            <div class="cta-buttons">
+                <a href="#pricing" class="btn btn-primary" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fas fa-dumbbell"></i> Start Elite Journey
+                </a>
+                <a href="#features" class="btn btn-secondary" data-aos="zoom-in" data-aos-delay="400">
+                    <i class="fas fa-play-circle"></i> Virtual Tour
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="glass-card" style="margin: 5rem auto; max-width: 1400px;">
+        <h2 class="section-title" data-aos="fade-down">PREMIUM FACILITIES</h2>
+        <div class="features-grid">
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon">
+                    <i class="fas fa-dumbbell"></i>
+                </div>
+                <h3>Technogym Elite Equipment</h3>
+                <p>50,000+ lbs of premium strength equipment. The latest Kineo intelligent machines with AI resistance adaptation and real-time performance tracking.</p>
+            </div>
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Master Trainer Academy</h3>
+                <p>Certified NASM, ACE, ISSA trainers averaging 12+ years experience. 1:4 trainer-to-member ratio with PhD-level sports science expertise.</p>
+            </div>
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon">
+                    <i class="fas fa-spa"></i>
+                </div>
+                <h3>Recovery & Wellness</h3>
+                <p>Cryotherapy chambers (-160°C), infrared saunas, compression therapy, float tanks, and NormaTec recovery systems. Medical-grade recovery.</p>
+            </div>
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Elevate Elite App</h3>
+                <p>Custom workout builder, live class streaming, nutrition tracking, biometric analysis, and trainer messaging. Apple Health & Google Fit integration.</p>
+            </div>
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="feature-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <h3>Gourmet Nutrition Lab</h3>
+                <p>Registered dietitians create personalized meal plans. 50+ daily macro-perfect meals. Juice bar with cold-press juices and performance smoothies.</p>
+            </div>
+            <div class="feature-card glass-card" data-aos="fade-up" data-aos-delay="600">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>AI Performance Analytics</h3>
+                <p>Wearable integration, VO2 Max testing, DEXA body scans, InBody 970 analysis, and predictive performance algorithms. Track every metric.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats-container">
+        <div class="stat-card glass-card" data-aos="flip-left">
+            <span class="stat-number" data-target="5234">0</span>
+            <div class="stat-label">ACTIVE MEMBERS</div>
+        </div>
+        <div class="stat-card glass-card" data-aos="flip-up">
+            <span class="stat-number" data-target="68">0</span>
+            <div class="stat-label">CERTIFIED TRAINERS</div>
+        </div>
+        <div class="stat-card glass-card" data-aos="flip-right">
+            <span class="stat-number" data-target="45000">0</span>
+            <div class="stat-label">SQ FT FACILITY</div>
+        </div>
+        <div class="stat-card glass-card" data-aos="flip-left" data-aos-delay="200">
+            <span class="stat-number" data-target="98.7">0</span><span style="font-size: 2rem;">%</span>
+            <div class="stat-label">SUCCESS RATE</div>
+        </div>
+    </section>
+
+    <!-- Classes -->
+    <section id="classes">
+        <div class="glass-card" style="max-width: 1400px; margin: 0 auto 5rem;">
+            <h2 class="section-title" data-aos="fade-down">CLASS SCHEDULE</h2>
+            <div class="schedule-grid">
+                <div class="class-card glass-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="class-time">6:00 AM</div>
+                    <h3>HIIT Inferno</h3>
+                    <p>45 min high-intensity circuit training with metabolic conditioning. Max fat burn, 600+ calories.</p>
+                    <div>Trainer: Mike Chen • Capacity: 12</div>
+                </div>
+                <div class="class-card glass-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="class-time">7:30 AM</div>
+                    <h3>Power Lift</h3>
+                    <p>60 min Olympic lifting and strength building. Technique coaching + progressive overload programming.</p>
+                    <div>Trainer: Sarah Johnson • Capacity: 8</div>
+                </div>
+                <div class="class-card glass-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="class-time">9:00 AM</div>
+                    <h3>Yoga Flow</h3>
+                    <p>60 min vinyasa flow with breathwork and mobility. Perfect recovery class with certified instructors.</p>
+                    <div>Trainer: Emily Rodriguez • Capacity: 15</div>
+                </div>
+                <div class="class-card glass-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="class-time">6:00 PM</div>
+                    <h3>Metabolic Burn</h3>
+                    <p>50 min EMOM conditioning with sleds, battle ropes, and assault bikes. Elite conditioning class.</p>
+                    <div>Trainer: David Park • Capacity: 10</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing">
+        <div class="glass-card" style="max-width: 1400px; margin: 0 auto;">
+            <h2 class="section-title" data-aos="fade-down">MEMBERSHIP PLANS</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card glass-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Essential Access</h3>
+                    <div class="price">$149<span>/mo</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i>24/7 Gym Access</li>
+                        <li><i class="fas fa-check"></i>Technogym Equipment</li>
+                        <li><i class="fas fa-check"></i>Lockers & Showers</li>
+                        <li><i class="fas fa-check"></i>Free Parking</li>
+                        <li><i class="fas fa-times" style="color: var(--text-muted);"></i>Trainer Sessions</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Select Essential</a>
+                </div>
+                <div class="pricing-card glass-card featured" data-aos="fade-up" data-aos-delay="200">
+                    <div class="popular-badge">MOST POPULAR</div>
+                    <h3>Elite Performance</h3>
+                    <div class="price">$299<span>/mo</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i>Full Facility Access</li>
+                        <li><i class="fas fa-check"></i>12 Personal Sessions</li>
+                        <li><i class="fas fa-check"></i>Nutrition Coaching</li>
+                        <li><i class="fas fa-check"></i>Recovery Access</li>
+                        <li><i class="fas fa-check"></i>Elite App Premium</li>
+                        <li><i class="fas fa-check"></i>Monthly Assessment</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Join Elite (Save 20%)</a>
+                </div>
+                <div class="pricing-card glass-card" data-aos="fade-up" data-aos-delay="300">
+                    <h3>VIP Diamond</h3>
+                    <div class="price">$599<span>/mo</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i>Everything in Elite</li>
+                        <li><i class="fas fa-check"></i>Unlimited Sessions</li>
+                        <li><i class="fas fa-check"></i>Dedicated Trainer</li>
+                        <li><i class="fas fa-check"></i>Private Changing</li>
+                        <li><i class="fas fa-check"></i>Priority Booking</li>
+                        <li><i class="fas fa-check"></i>Monthly DEXA Scan</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">VIP Status</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trainers -->
+    <section id="trainers">
+        <div class="glass-card" style="max-width: 1400px; margin: 0 auto 5rem;">
+            <h2 class="section-title" data-aos="fade-down">ELITE TRAINERS</h2>
+            <div class="trainers-grid">
+                <div class="trainer-card glass-card" data-aos="fade-up">
+                    <div class="trainer-photo">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Mike Chen</h3>
+                    <p>Head Strength Coach • NASM-CPT, CSCS<br>12x National Powerlifting Champion<br>Specialty: Olympic Lifting</p>
+                </div>
+                <div class="trainer-card glass-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="trainer-photo">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>Sarah Johnson</h3>
+                    <p>Performance Director • PhD Sports Science<br>Published researcher in metabolic conditioning<br>Specialty: HIIT Programming</p>
+                </div>
+                <div class="trainer-card glass-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="trainer-photo">
+                        <i class="fas fa-female"></i>
+                    </div>
+                    <h3>Emily Rodriguez</h3>
+                    <p>Recovery Specialist • RYT-500<br>Former professional dancer<br>Specialty: Mobility & Yoga</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials">
+        <div class="glass-card" style="max-width: 1400px; margin: 0 auto;">
+            <h2 class="section-title" data-aos="fade-down">SUCCESS STORIES</h2>
+            <div class="testimonial-grid">
+                <div class="glass-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"Lost 45lbs in 6 months and ran my first marathon. The trainers here are on another level. Best investment of my life."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SJ</div>
+                        <div>
+                            <div style="font-weight: 700; margin-bottom: 0.3rem;">Sarah Jenkins</div>
+                            <div style="color: var(--text-muted);">Tech Executive • Elite Member</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"From couch to deadlifting 405lbs. The facilities and coaching are unmatched. Corporate membership worth every penny."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MC</div>
+                        <div>
+                            <div style="font-weight: 700; margin-bottom: 0.3rem;">Michael Carter</div>
+                            <div style="color: var(--text-muted);">VP Finance • VIP Member</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"Transformed my physique and health completely. DEXA scans show 12% body fat drop. Science-backed results."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ER</div>
+                        <div>
+                            <div style="font-weight: 700; margin-bottom: 0.3rem;">Emma Reynolds</div>
+                            <div style="color: var(--text-muted);">Entrepreneur • Elite Member</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="contact" class="cta-section">
+        <div class="glass-card" style="max-width: 800px; margin: 0 auto;">
+            <h2 class="section-title" data-aos="fade-down">READY FOR ELITE?</h2>
+            <p style="font-size: 1.5rem; margin-bottom: 4rem; opacity: 0.9;" data-aos="fade-up" data-aos-delay="200">
+                Join 5,234+ members transforming their bodies and lives. Limited spots available this month.
+            </p>
+            <div data-aos="zoom-in" data-aos-delay="400">
+                <a href="#" class="btn btn-primary" style="font-size: 1.4rem; padding: 1.5rem 4rem;">
+                    <i class="fas fa-crown"></i> Claim Elite Status Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h3>ELEVATE FITNESS</h3>
+                <p style="color: var(--text-muted); max-width: 300px;">
+                    123 Elite Drive, Premium District<br>
+                    Luxury City, LC 90210
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>QUICK LINKS</h3>
+                <a href="#">Class Schedule</a>
+                <a href="#">Personal Training</a>
+                <a href="#">Nutrition Plans</a>
+                <a href="#">Membership Portal</a>
+            </div>
+            <div class="footer-section">
+                <h3>PROGRAMS</h3>
+                <a href="#">Strength Training</a>
+                <a href="#">Weight Loss</a>
+                <a href="#">Performance</a>
+                <a href="#">Recovery</a>
+            </div>
+            <div class="footer-section">
+                <h3>CONTACT</h3>
+                <p style="color: var(--text-muted);">
+                    Phone: (555)  Elite-123<br>
+                    Email: elite@elevatefitness.com<br>
+                    Hours: 24/7 Access
+                </p>
+            </div>
+        </div>
+        <div style="text-align: center; padding-top: 3rem; color: var(--text-muted); border-top: 1px solid var(--glass-border);">
+            © 2024 Elevate Fitness Elite. All rights reserved. | Premium Membership Only.
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/15551234567?text=Hi%20Elevate%20Team!%20I'm%20ready%20to%20join%20the%20Elite%20program.%20Can%20we%20discuss%20membership%20options?" 
+       class="whatsapp-float" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i>
+        <span style="font-size: 0.7rem; display: block; margin-top: 2px;">Chat Now</span>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // AOS Animation
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100,
+        });
+
+        // Mobile Nav
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(15, 15, 15, 0.98)';
+                header.style.backdropFilter = 'blur(40px)';
+            } else {
+                header.style.background = 'rgba(15, 15, 15, 0.95)';
+                header.style.backdropFilter = 'blur(30px)';
+            }
+        });
+
+        // Scroll Progress
+        window.addEventListener('scroll', () => {
+            const progress = document.querySelector('.scroll-progress');
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            progress.style.width = scrolled + '%';
+        });
+
+        // Stats Counter
+        const animateStats = () => {
+            const stats = document.querySelectorAll('.stat-number');
+            stats.forEach(stat => {
+                const target = parseFloat(stat.getAttribute('data-target'));
+                const count = parseFloat(stat.textContent.replace(/[^\d.]/g, '')) || 0;
+                const increment = target / (target < 100 ? 100 : 200);
+                
+                if (count < target) {
+                    stat.textContent = (count + increment).toFixed(target < 100 ? 1 : 0);
+                    setTimeout(animateStats, 20);
+                } else {
+                    stat.textContent = target + (target < 100 ? '' : '') + (target === 98.7 ? '%' : '');
+                }
+            });
+        };
+
+        const statsSection = document.querySelector('.stats-container');
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        });
+        statsObserver.observe(statsSection);
+
+        // Parallax Hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const parallaxSpeed = scrolled * 0.3;
+            hero.style.transform = `translateY(${parallaxSpeed}px)`;
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Intersection Observer for staggered animations
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.glass-card').forEach(card => {
+            revealObserver.observe(card);
+        });
+
+        // Typing effect for hero subtitle
+        const subtitle = document.querySelector('.hero-subtitle');
+        const text = subtitle.textContent;
+        subtitle.textContent = '';
+        let i = 0;
+        function typeWriter() {
+            if (i < text.length) {
+                subtitle.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+        window.addEventListener('load', typeWriter);
+
+        // Particle background enhancement
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.cssText = `
+                position: fixed;
+                width: 4px;
+                height: 4px;
+                background: var(--primary-gold);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 999;
+                left: ${Math.random() * 100}vw;
+                animation: particleFloat 15s infinite linear;
+            `;
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 15000);
+        }
+
+        function particleFloat() {
+            setInterval(createParticle, 800);
+        }
+
+        // Initialize particles after load
+        window.addEventListener('load', () => {
+            setTimeout(particleFloat, 2000);
+        });
+    </script>
+</body>
+</html>
